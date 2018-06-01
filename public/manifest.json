@@ -1,0 +1,20 @@
+{
+  "short_name": "Hotels PWA",
+  "name": "Hotels POC for PWA",
+  "icons": [
+    {
+      "src":"htl-pwa192X192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src":"htl-pwa256X256.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#222",
+  "theme_color": "#222",
+  "display": "standalone"
+}
