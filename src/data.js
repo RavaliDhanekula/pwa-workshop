@@ -1,6 +1,6 @@
 export const props = [{
     hotelName: 'Row New York City',
-    hotelLocation: 'Times Square - Theatre Disctrict',
+    hotelLocation: 'Times Square - NYC',
     amenities: 'Free Breakfast, Free Internet',
     hotelId: 6609504,
     stars: 4.5,

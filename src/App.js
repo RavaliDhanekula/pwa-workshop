@@ -10,8 +10,8 @@ import { ThemeProvider, GreenButton, Text, Box , Card, Image, Flex } from 'pcln-
 const ListingFlex = Flex.extend`
   flex-direction: column;
 `;
-
-if ('serviceWorker' in navigator) {
+//Workshop - 1
+if ('serviceWorker' in navigator) { // browser supports service worker
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('service_worker.js').then(function(registration) {
       // Registration was successful

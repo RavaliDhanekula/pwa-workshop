@@ -4,7 +4,8 @@ var doCache = true;
 
 // Name our cache
 var STATIC_CACHE_NAME = 'static-cache';
-var DYNAMIC_CACHE_NAME = 'dynamic-cache'
+var DYNAMIC_CACHE_NAME = 'dynamic-cache';
+var IMAGE_CACHE = 'image-cache'; // image cache - workshop-2
 //install even of service worked
 
 self.addEventListener('install', event => {
@@ -28,7 +29,7 @@ self.addEventListener("activate", event => {
     caches.keys()
     .then((keyList) => {
       return Promise.all(keyList.map((key) =>{
-        if (key !== STATIC_CACHE_NAME && key !== DYNAMIC_CACHE_NAME) {
+        if (key !== STATIC_CACHE_NAME && key !== DYNAMIC_CACHE_NAME && key !== IMAGE_CACHE) {
           console.log('removing old cache')
           return caches.delete(key)
         }
@@ -67,7 +68,25 @@ self.addEventListener("fetch", event => {
     event.respondWith(
       caches.match(event.request)
       .then((response) => {
-        if(response){
+        // if (event.request.contains('some-code')) {
+        //   return response;
+        // }
+        //Add code to put images in image cache - workshop - 2
+
+        if (event.request.destination === 'image') {
+          return fetch(event.request)
+          .then(res => {
+           return caches.open(IMAGE_CACHE)
+            .then( cache => {
+              cache.put(event.request.url, res.clone())
+              return res
+            })
+          })
+          .catch( err => {
+            
+          })
+        }
+        else if(response){
 
           return response
         } 
